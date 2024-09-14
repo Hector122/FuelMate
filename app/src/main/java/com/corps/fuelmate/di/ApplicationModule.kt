@@ -1,5 +1,6 @@
 package com.corps.fuelmate.di
 
+import com.corps.fuelmate.BuildConfig
 import com.corps.fuelmate.FuelRepository
 import com.corps.fuelmate.network.FuelApi
 import dagger.Module
@@ -22,9 +23,9 @@ class ApplicationModule {
     fun provideRetrofit(): Retrofit {
         val httpClient = OkHttpClient.Builder().run {
             addInterceptor(HttpLoggingInterceptor().apply {
-               // if (BuildConfig.DEBUG) {
+                if (BuildConfig.DEBUG) {
                     level = HttpLoggingInterceptor.Level.BODY
-                //}
+                }
             })
             build()
         }

@@ -10,7 +10,6 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.corps.fuelmate.screens.MainScreen
 import com.corps.fuelmate.ui.theme.FuelMateTheme
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,10 +33,9 @@ class MainActivity : ComponentActivity(),
         super.onNewIntent(intent)
         handleDeepLink(intent)
     }
-
-
 }
 
+// Example delegation
 interface DeepLinkHandler {
     fun handleDeepLink(intent: Intent?)
 }
@@ -47,7 +45,6 @@ class DeepLinkHandlerImpl : DeepLinkHandler {
         //Do something with the intent
     }
 }
-
 
 interface AnalyticsLogger {
     fun registerLivecycleOwner(owner: LifecycleOwner)
@@ -68,4 +65,6 @@ class AnalyticsLoggerImpl : AnalyticsLogger, LifecycleEventObserver {
             else -> Unit
         }
     }
+
+    // Example delegation finish
 }
